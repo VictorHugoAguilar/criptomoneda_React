@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 // Importamos imangen de fondo
 import imagen from "./cryptomonedas.png";
@@ -6,8 +7,12 @@ import imagen from "./cryptomonedas.png";
 // Importamos componentes
 import Formulario from "./Components/Formularios";
 
+//https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,JPY,EUR
 
 function App() {
+
+  
+
   return (
     <div className="container">
       <div className="row">
@@ -18,7 +23,6 @@ function App() {
           <h1>Cotiza Criptomenedas al Instante</h1>
           
           <Formulario 
-          
           />
         </div>
       </div>

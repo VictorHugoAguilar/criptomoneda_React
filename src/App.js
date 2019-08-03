@@ -27,6 +27,7 @@ function App() {
             console.log(resultado);
 
             setCargando(true);
+
             // cambiar despues de tres segundo el valor de cargando
             setTimeout(() => {
               setCargando(false)

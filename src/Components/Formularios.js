@@ -5,7 +5,10 @@ import axios from "axios";
 import Criptomoneda from "./Criptomoneda";
 import Error from "./Error";
 
-function Formulario() {
+function Formulario(props) {
+
+    const {setMoneda, setCriptomenda} = props;
+
     const [criptomonedas, setCriptomonedas] = useState([]);
     const [monedaCotizar, setMonedaCotizar] = useState("");
     const [criptoCotizar, setCriptoCotizar] = useState("");
@@ -14,15 +17,16 @@ function Formulario() {
     useEffect(() => {
         const consultarAPI = async () => {
             const url =
-                "https://min-api.cryptocompare.com/data/top/totaltoptiervolfull?limit=10&tsym=USD";
+                'https://min-api.cryptocompare.com/data/top/totaltoptiervolfull?limit=10&tsym=USD';
 
             const resultado = await axios.get(url);
-
+            
+            // colocar respuesta en el state
             setCriptomonedas(resultado.data.Data);
         };
         consultarAPI();
 
-        console.log(criptomonedas);
+        // console.log(criptomonedas);
     }, []);
 
     // Validar que el usuario llene ambos campos
@@ -37,6 +41,8 @@ function Formulario() {
         setError(false);
 
         // pasar los datos al componente principal
+        setMoneda(monedaCotizar);
+        setCriptomenda(criptoCotizar);
     };
 
     //mostrar el error en caso de que exista
